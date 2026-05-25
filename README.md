@@ -317,7 +317,60 @@ vendas2020 = [951642,244295,26964,787604,867660,78830,710331,646016,694913,53970
 
 #seu código aqui
 
+#Listas fornecidas contendo os produtos e o volume de vendas em cada ano
+produtos = ['iphone', 'galaxy', 'ipad', 'tv', 'máquina de café', 'kindle', 'geladeira', 'adega', 'notebook dell', 'notebook hp', 'notebook asus', 'microsoft surface', 'webcam', 'caixa de som', 'microfone', 'câmera canon']
+vendas2019 = [558147, 712350, 573823, 405252, 718654, 531580, 973139, 892292, 422760, 154753, 887061, 438508, 237467, 489705, 328311, 591120]
+vendas2020 = [951642, 244295, 26964, 787604, 867660, 78830, 710331, 646016, 694913, 539704, 324831, 667179, 295633, 725316, 644622, 994303]
 
+#Cabeçalho do relatório para a diretoria
+print("-" * 65)
+print("RELATÓRIO DE CRESCIMENTO DE VENDAS (2020 vs 2019)")
+print("-" * 65)
+
+#Estrutura de repetição para percorrer todos os produtos simultaneamente
+for i, produto in enumerate(produtos):
+    #Armazena as vendas de cada ano usando o índice 'i'
+    venda_2019 = vendas2019[i]
+    venda_2020 = vendas2020[i]
+    
+    #Estrutura de decisão: filtra apenas os produtos que venderam mais em 2020 do que em 2019
+    if venda_2020 > venda_2019:
+        #Cálculo da porcentagem de crescimento: (venda 2020 / venda 2019 - 1)
+        #Multiplica por 100 para transformar em porcentagem e usa :.2f para limitar a 2 casas decimais
+        crescimento_percentual = (venda_2020 / venda_2019 - 1) * 100
+        
+        #Exibe os resultados detalhados de cada produto que cumpriu o requisito
+        print(f"Produto: {produto.title()}")
+        print(f" - Vendas 2019: {venda_2019:,}")
+        print(f" - Vendas 2020: {venda_2020:,}")
+        print(f" - Crescimento : {crescimento_percentual:.2f}%")
+        print("-" * 65)
+
+Explicação do Código e das Estruturas
+
+1. Estrutura de Repetição: for e enumerate
+
+O comando for i, produto in enumerate(produtos): foi utilizado para iterar sobre a lista de produtos.
+
+O enumerate é extremamente útil porque, além de pegar o nome do produto, ele cria automaticamente um índice numérico (i) para cada item.
+
+Usa esse índice i para buscar a quantidade exata de vendas nos anos de 2019 (vendas2019[i]) e 2020 (vendas2020[i]), garantindo que não haja erro de desalinhamento entre as listas.
+
+2. Estrutura de Decisão: if
+
+O bloco condicional if venda_2020 > venda_2019: atua como um filtro analítico.
+
+A diretoria pediu especificamente para reportar os produtos que tiveram mais vendas do que no ano anterior.
+
+Essa estrutura avalia a condição para cada item; se ela for verdadeira (True), o bloco de código que calcula a porcentagem e imprime o resultado é executado. Caso contrário, o produto é ignorado.
+
+3. Formatação dos Resultados (f-strings)
+
+Dentro do print, utiliza formatações de string para deixar o relatório mais profissional:
+
+{venda:,}: Adiciona separadores de milhar (ex: 558.147), facilitando a leitura dos números grandes.
+
+:.2f: Formata o resultado do cálculo matemático para exibir apenas 2 casas decimais.
 
 4. DESAFIO: FOR DENTRO DE FOR
 Você tem uma lista com várias listas de números:
@@ -334,4 +387,46 @@ Faça um programa que:
 - Mostre cada número na tela
 - No final, mostre a soma total de todos os números
 
+#Lista de listas fornecida
+numeros = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
+#Variável para acumular a soma de todos os números
+soma_total = 0
+
+#Estrutura de repetição externa: percorre cada lista dentro da lista principal
+for lista_interna in numeros:
+    #Estrutura de repetição interna: percorre cada número dentro da lista atual
+    for numero in lista_interna:
+        #Mostra o número atual na tela
+        print(f"Número encontrado: {numero}")
+        
+        #Estrutura de decisão: verifica se o número é par apenas como exemplo prático
+        if numero % 2 == 0:
+            print(f"O número {numero} é par.")
+        else:
+            print(f"O número {numero} é ímpar.")
+            
+        #Adiciona o número à nossa soma total
+        soma_total += numero
+
+#Exibe o resultado final fora do loop
+print("-" * 30)
+print(f"A soma total de todos os números é: {soma_total}")
+
+Explicação das Estruturas Utilizadas
+
+1. Estruturas de Repetição (for)
+
+O laço for é utilizado para executar um bloco de código repetidas vezes até que uma sequência seja esgotada.
+
+for lista_interna in numeros:: Este é o laço externo. Ele percorre a lista principal e, a cada "passo", extrai uma das sublistas (ex: [1, 2, 3]).
+
+for numero in lista_interna:: Este é o laço aninhado (interno). Ele entra na sublista que foi selecionada no laço externo e percorre cada item individualmente (ex: 1, depois 2, depois 3).
+
+2. Estrutura de Decisão (if / else)
+
+A estrutura de decisão foi inserida no código para demonstrar como controlar o fluxo do programa com base em uma condição.
+
+if numero % 2 == 0:: Avalia se o resto da divisão do número por 2 é zero. Se for verdadeiro, o código indentado abaixo dele é executado (o número é par).
+
+else:: Caso a condição do if seja falsa (ou seja, o resto não é zero), este bloco é executado (o número é ímpar).
