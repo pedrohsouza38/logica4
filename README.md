@@ -203,7 +203,46 @@ quarto = [
 
 - Para simplificar, não vamos nos preocupar com possibilidades de "tentar colocar mais de 1 hóspede, digitar o cpf errado, etc. Nosso objetivo é treinar a criação de uma rotina de cadastro.
 
+#Inicializa a lista vazia que armazenará os hóspedes do quarto
+quarto = []
 
+#1. Identificar quantas pessoas ficarão no quarto
+qtd_pessoas = int(input("Quantas pessoas ficarão no quarto (1, 2, 3 ou 4)? "))
+
+#2. Estrutura de repetição para cadastrar cada hóspede
+for i in range(qtd_pessoas):
+    print(f"\n--- Cadastro do {i + 1}º Hóspede ---")
+    
+    nome = input("Digite o nome do hóspede: ")
+    cpf = input("Digite o CPF do hóspede (ex: 00000000000): ")
+    
+    #Formata o CPF conforme o padrão exigido
+    cpf_formatado = f"cpf:{cpf}"
+    
+    #Cria uma lista temporária apenas para a pessoa atual: [nome, cpf_formatado]
+    pessoa = [nome, cpf_formatado]
+    
+    #Adiciona a lista da pessoa na lista principal do quarto
+    quarto.append(pessoa)
+
+#3. Exibir o resultado final gerado
+print("\n=== Cadastro Concluído ===")
+print("Dados do quarto:")
+print(quarto)
+
+Justificativa e Explicação do Código
+
+Estrutura de Repetição (for)
+
+No código, o comando for é utilizado juntamente com a função range(qtd_pessoas). O objetivo é repetir o bloco de código que pede o nome e o CPF exatamente o número de vezes que o usuário definiu.
+
+Exemplo: Se o recebedor digitar que o quarto terá 3 pessoas, a estrutura repetitiva irá rodar 3 vezes, garantindo que o programa não pare de pedir os dados antes da quantidade correta ser informada, e não incomode com perguntas excedentes.
+
+Estruturas de Decisão
+
+Embora o exemplo didático não exija o uso de validações complexas, em um sistema de hotelaria real, o if/elif/else seria fundamental neste exato momento para tomar caminhos diferentes com base em uma condição (por exemplo, garantir que o número digitado no primeiro input seja de 1 a 4.
+
+Aplicação lógica: Usar uma decisão para checar if qtd_pessoas > 4: e barrar a entrada de pessoas excedentes, ou emitir um alerta elif qtd_pessoas < 1: para evitar quartos vazios.
 
 2. Análise de Vendas
 
@@ -222,7 +261,45 @@ vendas = [
 
 #seu código aqui
 
+#Definindo a meta que os vendedores precisam atingir
+meta = 10000
 
+#Lista contendo os vendedores e seus respectivos valores de vendas
+vendas = [
+    ['João', 15000],
+    ['Julia', 27000],
+    ['Marcus', 9900],
+    ['Maria', 3750],
+    ['Ana', 10300],
+    ['Alon', 7870],
+]
+
+#Exibindo um cabeçalho para melhor visualização no terminal
+print("--- Vendedores que bateram a meta ---")
+
+#Estrutura de repetição: Percorre cada item (vendedor) dentro da lista principal
+for vendedor in vendas:
+    nome = vendedor[0]  #Pega o nome do vendedor (posição 0)
+    valor_vendido = vendedor[1]  #Pega o valor da venda (posição 1)
+    
+    #Estrutura de decisão: Verifica se o valor vendido é maior ou igual à meta
+    if valor_vendido >= meta:
+        #Exibe o resultado caso a condição seja verdadeira
+        print(f"Vendedor: {nome} | Valor Vendido: R$ {valor_vendido}")
+
+Explicação do Código e das Estruturas Utilizadas:
+
+Estrutura de Repetição (for vendedor in vendas):
+
+Por que usar: Como tem vários vendedores dentro de uma lista, precisa de uma forma automática de "passar" de vendedor em vendedor para analisar os dados um por um.
+
+Como funciona: O laço for percorre a lista vendas. A cada ciclo (loop), ele pega a lista interna de um vendedor específico (ex: ['João', 15000]) e a armazena na variável vendedor. Isso evita que tenha que escrever o mesmo código manualmente para cada pessoa.
+
+Estrutura de Decisão (if valor_vendido >= meta):
+
+Por que usar: Precisa filtrar apenas as pessoas que alcançaram ou superaram o valor estipulado. O computador precisa de uma lógica condicional para tomar essa decisão.
+
+Como funciona: O if avalia a condição: "O valor vendido é maior ou igual a 10000?". Se a resposta for Verdadeira (True), o bloco de código dentro do if é executado. Se for Falsa (False), o programa simplesmente ignora e vai para o próximo vendedor da lista.
 
 3. Comparação com Ano Anterior
 
