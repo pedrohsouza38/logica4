@@ -1,2 +1,2 @@
-# logica5
-Exercícios de Lógica com Python 5
+# logica4
+Exercícios de Lógica com Python 4
